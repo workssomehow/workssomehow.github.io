@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Works Somehow — Does it actually work?</title>
+<link rel="icon" href="data:,">
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #26221D;
+  --accent: #E8C766;
+  --card: #2F2A24;
+  --line: #4A4338;
+  --fg: #EDE6D8;
+  --muted: #A89F90;
+  --selection: #4A4236;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 24px 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.6 "Segoe UI", "SF Pro Text", Roboto, "Helvetica Neue", sans-serif;
+  text-align: left;
+}
+header, main, footer {
+  max-width: 760px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+::selection { background: var(--selection); color: var(--fg); }
+:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+h1 { margin: 0; font-size: 2rem; line-height: 1.2; }
+header p { margin: 4px 0 0; color: var(--muted); }
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 16px;
+  margin-block: 24px;
+}
+.card {
+  container-type: inline-size;
+  min-width: 0;
+  padding: 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.card-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+h2 { margin: 0; font-size: 1.25rem; line-height: 1.3; }
+h2 small { font-size: 0.875rem; font-weight: 400; color: var(--muted); }
+.badge {
+  padding: 2px 10px;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  color: var(--accent);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+.badge--verdict { background: var(--accent); color: var(--bg); }
+dl { margin: 16px 0 0; }
+dt { margin-top: 12px; color: var(--muted); font-size: 0.875rem; }
+dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+@container (min-width: 26rem) {
+  dl { display: grid; grid-template-columns: 9rem 1fr; column-gap: 16px; }
+  dt, dd { margin-top: 12px; }
+}
+code {
+  display: block;
+  min-height: 44px;
+  padding: 12px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font: 0.9rem/1.5 ui-monospace, "Cascadia Mono", Consolas, "SFMono-Regular", monospace;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  -webkit-user-select: all;
+  user-select: all;
+}
+footer { color: var(--muted); font-size: 0.875rem; }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+@media (max-width: 30rem) {
+  header, main, footer { padding-inline: 16px; }
+}
+/* Added by Works Somehow (not by gstack): list for "Where it broke", and the note under the card. */
+dd ul { margin: 0; padding-left: 1.2em; }
+dd li + li { margin-top: 6px; }
+.note { margin: 0 0 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1 lang="en">Works Somehow</h1>
+  <p lang="en">Does it actually work?</p>
+</header>
+<main>
+<!--
+To add a new tool: copy the first article block, paste it below, change the texts.
+To write a verdict: replace the TBD text in the badge with the verdict and add the
+filled badge class from the style block to the badge's class value (its name starts
+with badge and ends with verdict).
+Example verdict texts: Works, Works somehow, Doesn't work.
+Replace the dash in the "Where it broke" row with a note.
+-->
+<article class="card">
+  <div class="card-head">
+    <h2>gstack <small>· Episode 1</small></h2>
+    <span class="badge badge--verdict">Verdict: Works somehow</span>
+  </div>
+  <dl>
+    <dt>Test date</dt>
+    <dd><time datetime="2026-11-11">2026-11-11</time></dd>
+    <dt>Model</dt>
+    <dd>Claude Sonnet 5.5 (effort: medium)</dd>
+    <dt>Install</dt>
+    <dd><code>git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack &amp;&amp; cd ~/.claude/skills/gstack &amp;&amp; ./setup</code></dd>
+    <dt>Where it broke</dt>
+    <dd>
+      <ul>
+        <li>Windows setup error: the skills failed to render until the config folder was moved under the home folder.</li>
+        <li>The design commands ask for an extra, paid API key.</li>
+        <li>The 5-hour usage limit ran out before /review produced anything.</li>
+      </ul>
+    </dd>
+  </dl>
+</article>
+</main>
+<footer>
+  <p class="note">gstack built this page. We only translated it into English and filled in the verdict and the "Where it broke" notes. The design is unchanged.</p>
+  Works Somehow — test notes
+</footer>
+</body>
+</html>
